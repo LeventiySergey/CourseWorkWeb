@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Реєстрація</title>
+  <style>
+    body {
+      background-color: #f0f0f0; /* Колір фону сторінки */
+      font-family: Arial, sans-serif; /* Шрифт */
+      margin: 0; /* Видаляємо відступи */
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Розтягуємо сторінку на весь екран */
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    form {
+      background-color: #28a745; /* Зелений фон форми */
+      padding: 20px; /* Внутрішні відступи форми */
+      border-radius: 8px; /* Закруглення кутів форми */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тінь форми */
+      width: 300px; /* Ширина форми */
+    }
+
+    h1 {
+      color: white; /* Білий колір тексту заголовка */
+      text-align: center; /* Центрування заголовка */
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px; /* Відстань між міткою і полем вводу */
+      color: white; /* Білий колір тексту мітки */
+    }
+
+    input {
+      width: 100%; /* Розтягуємо поле вводу на всю ширину форми */
+      padding: 8px; /* Внутрішні відступи поля вводу */
+      margin-bottom: 15px; /* Відстань між полями вводу */
+      box-sizing: border-box; /* Враховуємо відступи і границі в загальну ширину */
+    }
+
+    button {
+      background-color: #218838; /* Зелений колір кнопки */
+      color: white; /* Білий колір тексту кнопки */
+      padding: 10px; /* Внутрішні відступи кнопки */
+      border: none; /* Позбавляємо границю у кнопки */
+      border-radius: 4px; /* Закруглення кутів кнопки */
+      cursor: pointer; /* Задаємо вказівник при наведенні на кнопку */
+      width: 100%; /* Розтягуємо кнопку на всю ширину форми */
+      /* Додаємо стилі для hover (наведення) */
+      transition: background-color 0.3s; /* Плавне змінення колір фону при hover */
+    }
+
+    button:hover {
+      background-color: #155724; /* Новий колір фону при hover */
+    }
+
+    .warning {
+      color: #dc3545; /* Червоний колір тексту предупреждення */
+      margin-top: 10px; /* Відстань від предупреждення до інших елементів */
+    }
+
+    /* Стилі для блока з посиланням на вхід */
+    p {
+      text-align: center;
+      margin-top: 20px;
+      color: #333; /* Колір тексту */
+      background-color: #f8f9fa; /* Фон для підвищення видимості тексту */
+      padding: 10px; /* Внутрішні відступи */
+      border-radius: 8px; /* Закруглення кутів блоку з текстом */
+      border: 2px solid black; /* Чорна обводка блока з текстом */
+    }
+
+    a {
+      color: #007bff; /* Колір посилання */
+      text-decoration: none; /* Відміна підчеркування посилання */
+    }
+
+    a:hover {
+      text-decoration: underline; /* Підчеркування при наведенні на посилання */
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <form id="registrationForm" action="http://localhost:3000/register" method="POST">
+    <h1>Реєстрація</h1>
+    <label for="username">Ім'я користувача:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="email">Електронна пошта:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit" id="registerBtn">Зареєструватися</button>
+    <div class="warning" id="warningMessage"></div>
+  </form>
+
+  <p>Якщо у вас вже є обліковий запис, ви можете <a href="./login.html">увійти тут</a>.</p>
+</div>
+
+</body>
+<script>
+  document.getElementById('registrationForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Перевірка на заповненість полів
+    if (!username || !email || !password) {
+      document.getElementById('warningMessage').textContent = 'Будь ласка, заповніть всі поля';
+      return;
+    }
+
+    try {
+      // Видалення попередження при настанні умови
+      document.getElementById('warningMessage').textContent = '';
+
+      const response = await fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, email, password })
+      });
+
+      const data = await response.json();
+
+      alert(data.message); // Показуємо повідомлення про результат
+    } catch (error) {
+      console.error('Помилка при відправці запиту:', error);
+    }
+  });
+</script>
+</html>
