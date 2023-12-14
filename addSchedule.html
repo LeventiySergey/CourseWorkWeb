@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Домашня сторінка</title>
+    <link rel="stylesheet" href="./addSchedule.css">
+    <script src="./addSchedule.js"></script>
+</head>
+
+<body>
+<div class="header">
+    <button class="add-schedule-btn" onclick="window.location.href='./addSchedule.html'">Додати розклад</button>
+    <h1><a href="./home.html">Домашня сторінка</a></h1>
+    <button class="view-schedule-btn" onclick="window.location.href='./viewSchedule.html'">Подивитися розклад</button>
+</div>
+
+<!-- Schedule Name Input Field -->
+<br><br>
+<div class="schedule-name-input">
+    <label for="scheduleName">Назва розкладу:</label>
+    <input type="text" id="scheduleName" placeholder="Введіть назву розкладу"><br><br>
+    <label for="rowCount">Кількість рядків:</label>
+    <input type="number" id="rowCount" placeholder="Введіть кількість рядків" min="1" max="8"><br><br>
+    <button onclick="showScheduleContainer()">Ввести</button>
+</div>
+
+<!-- Schedule Container (Hidden by Default) -->
+<div class="schedule-container" id="scheduleContainer">
+    <label class="schedule-title">Розклад </label>
+    <span id="scheduleNameDisplay"></span>
+
+    <!-- Schedule Entry Fields -->
+    <div class="schedule-entry">
+        <input type="text" placeholder="Час початку">
+        <input type="text" placeholder="Час кінця">
+        <input type="text" placeholder="Назва дисципліни">
+    </div>
+
+    <div class="add-schedule-btn-container">
+        <button class="add-schedule-btn" onclick="addSchedule()">Додати розклад</button>
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -5,91 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Реєстрація</title>
-  <style>
-    body {
-      background-color: #f0f0f0; /* Колір фону сторінки */
-      font-family: Arial, sans-serif; /* Шрифт */
-      margin: 0; /* Видаляємо відступи */
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh; /* Розтягуємо сторінку на весь екран */
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    form {
-      background-color: #28a745; /* Зелений фон форми */
-      padding: 20px; /* Внутрішні відступи форми */
-      border-radius: 8px; /* Закруглення кутів форми */
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тінь форми */
-      width: 300px; /* Ширина форми */
-    }
-
-    h1 {
-      color: white; /* Білий колір тексту заголовка */
-      text-align: center; /* Центрування заголовка */
-    }
-
-    label {
-      display: block;
-      margin-bottom: 10px; /* Відстань між міткою і полем вводу */
-      color: white; /* Білий колір тексту мітки */
-    }
-
-    input {
-      width: 100%; /* Розтягуємо поле вводу на всю ширину форми */
-      padding: 8px; /* Внутрішні відступи поля вводу */
-      margin-bottom: 15px; /* Відстань між полями вводу */
-      box-sizing: border-box; /* Враховуємо відступи і границі в загальну ширину */
-    }
-
-    button {
-      background-color: #218838; /* Зелений колір кнопки */
-      color: white; /* Білий колір тексту кнопки */
-      padding: 10px; /* Внутрішні відступи кнопки */
-      border: none; /* Позбавляємо границю у кнопки */
-      border-radius: 4px; /* Закруглення кутів кнопки */
-      cursor: pointer; /* Задаємо вказівник при наведенні на кнопку */
-      width: 100%; /* Розтягуємо кнопку на всю ширину форми */
-      /* Додаємо стилі для hover (наведення) */
-      transition: background-color 0.3s; /* Плавне змінення колір фону при hover */
-    }
-
-    button:hover {
-      background-color: #155724; /* Новий колір фону при hover */
-    }
-
-    .warning {
-      color: #dc3545; /* Червоний колір тексту предупреждення */
-      margin-top: 10px; /* Відстань від предупреждення до інших елементів */
-    }
-
-    /* Стилі для блока з посиланням на вхід */
-    p {
-      text-align: center;
-      margin-top: 20px;
-      color: #333; /* Колір тексту */
-      background-color: #f8f9fa; /* Фон для підвищення видимості тексту */
-      padding: 10px; /* Внутрішні відступи */
-      border-radius: 8px; /* Закруглення кутів блоку з текстом */
-      border: 2px solid black; /* Чорна обводка блока з текстом */
-    }
-
-    a {
-      color: #007bff; /* Колір посилання */
-      text-decoration: none; /* Відміна підчеркування посилання */
-    }
-
-    a:hover {
-      text-decoration: underline; /* Підчеркування при наведенні на посилання */
-    }
-  </style>
+  <link rel="stylesheet" href="./registration.css">
 </head>
 
 <body>
@@ -128,7 +44,7 @@
       // Видалення попередження при настанні умови
       document.getElementById('warningMessage').textContent = '';
 
-      const response = await fetch('http://localhost:3000/register', {
+      const response = await fetch('http://localhost:3000/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

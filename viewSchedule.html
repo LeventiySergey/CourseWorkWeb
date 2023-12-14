@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Домашня сторінка</title>
+  <link rel="stylesheet" href="./viewSchedule.css">
+</head>
+
+<body>
+<div class="header">
+  <button class="add-schedule-btn" id="addScheduleBtn" onclick="window.location.href='./addSchedule.html'">Додати розклад</button>
+  <h1><a href="./home.html">Домашня сторінка</a></h1>
+  <button class="view-schedule-btn" id="viewScheduleBtn" onclick="window.location.href='./viewSchedule.html'">Подивитися розклад</button>
+</div>
+
+<div class="search-container">
+  <label class="search-label">Введіть назву розкладу</label>
+  <input type="text" class="search-input" id="scheduleNameInput" placeholder="Назва розкладу">
+  <button class="search-btn" id="searchScheduleBtn">Пошук</button>
+</div>
+
+<div id="scheduleContainer" class="search-container"></div>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (!user) {
+      window.location.href = './login.html';
+      return;
+    }
+
+  });
+
+  document.getElementById('searchScheduleBtn').addEventListener('click', async () => {
+    const scheduleName = document.getElementById('scheduleNameInput').value.trim();
+
+    if (scheduleName) {
+      try {
+        const response = await fetch('http://localhost:3000/schedule/searchSchedule', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            scheduleName
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          const scheduleContainer = document.getElementById('scheduleContainer');
+          scheduleContainer.innerHTML = ''; // Clear previous results
+
+          if (data.schedules && data.schedules.length > 0) {
+            const scheduleNameHeader = document.createElement('h2');
+            scheduleNameHeader.textContent = `Розклад: ${data.schedules[0].scheduleName}`;
+            scheduleContainer.appendChild(scheduleNameHeader);
+
+            const table = document.createElement('table');
+            table.border = '1';
+
+            // Create table header
+            const headerRow = document.createElement('tr');
+            const headerColumns = ['Початок', 'Кінець', 'Дисципліна'];
+            headerColumns.forEach(headerText => {
+              const headerCell = document.createElement('th');
+              headerCell.textContent = headerText;
+              headerRow.appendChild(headerCell);
+            });
+            table.appendChild(headerRow);
+
+            // Сортировка расписания по времени начала
+            data.schedules.sort((a, b) => {
+              const timeA = new Date(`1970-01-01T${a.timeStart}`);
+              const timeB = new Date(`1970-01-01T${b.timeStart}`);
+              return timeA - timeB;
+            });
+
+            // Populate table with schedule data
+            data.schedules.forEach(schedule => {
+              const row = document.createElement('tr');
+              const columns = [schedule.timeStart, schedule.timeEnd, schedule.discipline];
+              columns.forEach(columnText => {
+                const cell = document.createElement('td');
+                cell.textContent = columnText;
+                row.appendChild(cell);
+              });
+              table.appendChild(row);
+            });
+
+            scheduleContainer.appendChild(table);
+          } else {
+            const noScheduleMessage = document.createElement('p');
+            noScheduleMessage.textContent = 'Розклад не знайдено';
+            scheduleContainer.appendChild(noScheduleMessage);
+          }
+        } else {
+          console.error(data.message);
+        }
+      } catch (error) {
+        console.error('Виникла помилка при виконанні запиту:', error);
+      }
+    } else {
+      console.error('Введіть назву розкладу');
+    }
+  });
+</script>
+</body>
+
+</html>

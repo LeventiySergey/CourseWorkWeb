@@ -1,34 +1,11 @@
 const express = require('express');
-const sqlite3 = require('sqlite3');
 const bcrypt = require('bcrypt');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const sqlite3 = require('sqlite3');
 
-const app = express();
-const port = 3000;
-
-// Подключение к базе данных SQLite
+const router = express.Router();
 const db = new sqlite3.Database('users.db');
 
-// Создание таблицы для пользователей
-db.run(`
-  CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT NOT NULL,
-    email TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL
-  )
-`);
-
-// Используем body-parser для обработки данных из тела запроса
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-// Включаем поддержку CORS
-app.use(cors());
-
-// Регистрация пользователя
-app.post('/register', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
@@ -61,8 +38,7 @@ app.post('/register', async (req, res) => {
     }
 });
 
-// Вход пользователя
-app.post('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
 
@@ -96,17 +72,9 @@ app.post('/login', async (req, res) => {
     }
 });
 
-// Выход из аккаунта
-app.post('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
     // Здесь вы можете добавить необходимую логику для выхода, например, удаление сессии
     res.status(200).json({ message: 'Ви успішно вийшли з акаунту' });
 });
 
-// Обработчик GET-запросов на корневой путь
-app.get('/', (req, res) => {
-    res.send('Сервер працює');
-});
-
-app.listen(port, () => {
-    console.log(`Сервер запущено на порту ${port}`);
-});
+module.exports = router;

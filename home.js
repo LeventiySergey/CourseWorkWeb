@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.log('Данные пользователя:', user);
 
         // Отображаем информацию о пользователе
+        userInfoContainer.innerHTML = ''; // Clear the container
         const userText = `Ласкаво просимо, ${user.username} (${user.email})`;
         const userInfoParagraph = document.createElement('p');
         userInfoParagraph.textContent = userText;
@@ -27,22 +28,18 @@ document.addEventListener('DOMContentLoaded', async function () {
             try {
                 console.log('Вы нажали кнопку "Вийти"');
 
-                const response = await fetch('http://localhost:3000/logout', {
+                const response = await fetch('http://localhost:3000/auth/logout', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    // Передача данных (возможно, вам не понадобится тело запроса)
                     body: JSON.stringify({}),
                 });
 
                 if (response.ok) {
-                    // Удаляем данные пользователя из локального хранилища
                     localStorage.removeItem('user');
-                    // Перенаправляем на страницу входа
                     window.location.href = './login.html';
                 } else {
-                    // Выводим сообщение об ошибке
                     const data = await response.json();
                     alert(data.message);
                 }
