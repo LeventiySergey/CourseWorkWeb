@@ -5,25 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Домашня сторінка</title>
-    <link rel="stylesheet" href="./addSchedule.css">
-    <script src="./addSchedule.js"></script>
+    <link rel="stylesheet" href="../css/addSchedule.css">
+    <script src="../js/addSchedule.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
 <div class="header">
     <button class="add-schedule-btn" onclick="window.location.href='./addSchedule.html'">Додати розклад</button>
-    <h1><a href="./home.html">Домашня сторінка</a></h1>
-    <button class="view-schedule-btn" onclick="window.location.href='./viewSchedule.html'">Подивитися розклад</button>
+    <h1><a href="home.html">Домашня сторiнка</a></h1>
+    <button class="view-schedule-btn" onclick="window.location.href='viewSchedule.html'">Подивитися розклад</button>
 </div>
 
 <!-- Schedule Name Input Field -->
 <br><br>
 <div class="schedule-name-input">
-    <label for="scheduleName">Назва розкладу:</label>
+    <label for="scheduleName" class="scheduleName">Назва розкладу:</label>
     <input type="text" id="scheduleName" placeholder="Введіть назву розкладу"><br><br>
-    <label for="rowCount">Кількість рядків:</label>
+    <label for="rowCount" class="rowCount">Кiлькiсть рядкiв:</label>
     <input type="number" id="rowCount" placeholder="Введіть кількість рядків" min="1" max="8"><br><br>
-    <button onclick="showScheduleContainer()">Ввести</button>
+    <button class="input-schedule-btn" onclick="showScheduleContainer()">Ввести</button>
 </div>
 
 <!-- Schedule Container (Hidden by Default) -->

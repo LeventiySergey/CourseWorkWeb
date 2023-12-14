@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         if (!user) {
             // Если пользователь не авторизован, перенаправляем на страницу входа
-            window.location.href = './login.html';
+            window.location.href = '../html/login.html';
             return;
         }
 
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 if (response.ok) {
                     localStorage.removeItem('user');
-                    window.location.href = './login.html';
+                    window.location.href = '../html/login.html';
                 } else {
                     const data = await response.json();
                     alert(data.message);

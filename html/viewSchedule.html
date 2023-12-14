@@ -5,18 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Домашня сторінка</title>
-  <link rel="stylesheet" href="./viewSchedule.css">
+  <link rel="stylesheet" href="../css/viewSchedule.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
 <div class="header">
-  <button class="add-schedule-btn" id="addScheduleBtn" onclick="window.location.href='./addSchedule.html'">Додати розклад</button>
-  <h1><a href="./home.html">Домашня сторінка</a></h1>
+  <button class="add-schedule-btn" id="addScheduleBtn" onclick="window.location.href='addSchedule.html'">Додати розклад</button>
+  <h1><a href="home.html">Домашня сторiнка</a></h1>
   <button class="view-schedule-btn" id="viewScheduleBtn" onclick="window.location.href='./viewSchedule.html'">Подивитися розклад</button>
 </div>
 
 <div class="search-container">
-  <label class="search-label">Введіть назву розкладу</label>
+  <label class="search-label">Введiть назву розкладу</label>
   <input type="text" class="search-input" id="scheduleNameInput" placeholder="Назва розкладу">
   <button class="search-btn" id="searchScheduleBtn">Пошук</button>
 </div>
@@ -29,7 +30,7 @@
     const user = JSON.parse(localStorage.getItem('user'));
 
     if (!user) {
-      window.location.href = './login.html';
+      window.location.href = 'login.html';
       return;
     }
 

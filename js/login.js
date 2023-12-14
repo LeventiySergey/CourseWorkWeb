@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (response.ok) {
                 // Перенаправляем на домашнюю страницу или другую страницу после входа
-                window.location.href = './home.html';
+                window.location.href = '../html/home.html';
 
                 // Сохраняем данные пользователя в локальном хранилище
                 localStorage.setItem('user', JSON.stringify(data.user));

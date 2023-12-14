@@ -1,0 +1,132 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/007/188/453/original/abstract-blur-background-with-pastel-color-free-vector.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+.header {
+    background-color: #957DAD;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid #6c5b7d;
+}
+
+h1 a {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: xxx-large;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+button {
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.add-schedule-btn,
+.view-schedule-btn,
+.input-schedule-btn{
+    padding: 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.add-schedule-btn,
+.view-schedule-btn{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: large;
+    background-color: #645673;
+    color: white;
+    border: 2px solid #40374a;
+    border-radius: 8px;
+}
+
+.input-schedule-btn{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: large;
+    background-color: #645673;
+    color: white;
+    border: 2px solid #40374a;
+    border-radius: 8px;
+    align-self: center;
+}
+
+.add-schedule-btn:hover,
+.view-schedule-btn:hover,
+.input-schedule-btn:hover{
+    background-color: #453b4f;
+}
+
+.scheduleName,
+.rowCount{
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.schedule-container {
+    display: none;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.schedule-title {
+    font-family: 'Nunito', sans-serif;
+    font-size: xx-large;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.schedule-entry {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 7px;
+}
+
+.add-schedule-btn-container {
+    margin-top: 20px;
+}
+
+.notification {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    display: none;
+}
+
+.error-notification {
+    background-color: #f44336;
+}

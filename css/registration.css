@@ -13,13 +13,16 @@ body {
 }
 
 .container {
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    font-size: large;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 form {
-    background-color: #28a745; /* Зелений фон форми */
+    background-color: #7FB5B5; /* Зелений фон форми */
     padding: 20px; /* Внутрішні відступи форми */
     border-radius: 8px; /* Закруглення кутів форми */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тінь форми */
@@ -42,10 +45,14 @@ input {
     padding: 8px; /* Внутрішні відступи поля вводу */
     margin-bottom: 15px; /* Відстань між полями вводу */
     box-sizing: border-box; /* Враховуємо відступи і границі в загальну ширину */
+    border-radius: 7px;
 }
 
 button {
-    background-color: #218838; /* Зелений колір кнопки */
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    font-size: large;
+    background-color: #4d8082; /* Зелений колір кнопки */
     color: white; /* Білий колір тексту кнопки */
     padding: 10px; /* Внутрішні відступи кнопки */
     border: none; /* Позбавляємо границю у кнопки */
@@ -57,7 +64,7 @@ button {
 }
 
 button:hover {
-    background-color: #155724; /* Новий колір фону при hover */
+    background-color: #223f40; /* Новий колір фону при hover */
 }
 
 .warning {
@@ -65,7 +72,7 @@ button:hover {
     margin-top: 10px; /* Відстань від предупреждення до інших елементів */
 }
 
-/* Стилі для посилання на реєстрацію */
+/* Стилі для блока з посиланням на вхід */
 p {
     text-align: center;
     margin-top: 20px;

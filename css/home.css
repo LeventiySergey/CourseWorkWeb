@@ -13,21 +13,23 @@ body {
     background-position: center;
 }
 
-
 .header {
-    background-color: #2c8582;
+    background-color: #957DAD;
     color: white;
     padding: 10px;
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 2px solid #1d635f;
+    border-bottom: 2px solid #6c5b7d;
 }
 
 h1 a {
-    color: white;
-    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: xxx-large;
+    color: white; /* Set the text color to white */
+    text-decoration: none; /* Optional: Remove the underline */
     margin-top: 20px;
 }
 
@@ -49,58 +51,33 @@ button {
 }
 
 .add-schedule-btn,
-.view-schedule-btn {
-    background-color: #1d635f;
+.view-schedule-btn,
+.logout-btn{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: large;
+    background-color: #645673;
     color: white;
-    border: 2px solid #1d635f;
+    border: 2px solid #40374a;
     border-radius: 8px;
-    width: 200px;
 }
 
 .add-schedule-btn:hover,
-.view-schedule-btn:hover {
-    background-color: #134e4b;
+.view-schedule-btn:hover,
+.logout-btn:hover{
+    background-color: #453b4f;
 }
 
-.schedule-container {
-    display: none;
-    margin-top: 20px;
-    flex-direction: column;
-    align-items: center;
-}
-
-.schedule-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.schedule-entry {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin-bottom: 10px;
-}
-
-input {
-    width: 60%;
-    padding: 8px;
-    box-sizing: border-box;
-}
-
-.add-schedule-btn-container {
-    margin-top: 20px;
-}
-
-.notification {
-    background-color: #4CAF50;
-    color: white;
+.ad-container {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    font-size: larger;
+    align-self: center;
+    margin-top: 40px;
+    padding: 20px;
+    width: 70%;
+    background-color: #e0e0e0;
+    border: 2px solid #999;
+    border-radius: 12px;
     text-align: center;
-    padding: 10px;
-    margin-top: 10px;
-    display: none;
-}
-
-.error-notification {
-    background-color: #f44336;
 }
